@@ -2,10 +2,20 @@
 
 
 {% block content %}
-    <a href="{% url 'post_new' %}">+Создать пост</a><br>
+
+    {% if user.is_authenticated %}
+        {{ user.username }} |
+        <a href="{% url 'post_new' %}">+Создать пост</a> | 
+        <a href="{% url 'logout' %}">Выйти</a><br>
+    {% else %}
+        <a href="{% url 'signup' %}">Регистрация</a> |
+        <a href="{% url 'login' %}">Войти</a><br>  
+    {% endif %}
+    
     {% for post in object_list %}<br>
         <a href="{% url 'post_detail' post.pk %}">{{post.title}}</a><br>
         <p>{{post.body}}</p><br>
     {% endfor %}
     <a href="{% url 'about' %}">About</a>
+
 {% endblock %}

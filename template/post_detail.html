@@ -4,7 +4,8 @@
 {% block content %}
     <p>{{post.title}}</p>
     <p>{{post.body}}</p><br>
-    <a href="{% url 'post_edit' post.pk %}">Изменить пост</a>
+    <a href="{% url 'post_delete' post.pk %}">Изменить пост</a> |
+    <a href="{% url 'post_delete' post.pk %}">Удалить пост</a>
 
 
 <p><a href="{% url 'home' %}">На главную</a></p>
