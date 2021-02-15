@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <a href="{% url 'post_new' %}">+Создать пост</a><br>
+    {% for post in object_list %}<br>
+        <a href="{% url 'post_detail' post.pk %}">{{post.title}}</a><br>
+        <p>{{post.body}}</p><br>
+    {% endfor %}
+    <a href="{% url 'about' %}">About</a>
+{% endblock %}
